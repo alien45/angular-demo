@@ -19,7 +19,7 @@
     gulp run-local' # will open index.html in a browser 
                     # and also will do Unit Tests everytime any file is changed
 ```
-5. To run Unit Tests separately run one of the following commands:
+5. To run Unit Tests using Karma & Jasmine separately run one of the following commands:
 ```
     # 1. to run Unit Test only once:
     gulp test
