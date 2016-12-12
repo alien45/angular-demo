@@ -2,6 +2,7 @@
  * Created by tchowdhury on 10/12/2016.
  */
 angular.module('pages.home', [
+    'ngRoute',
     'ui.bootstrap',
     'components.services.data'
 ]);

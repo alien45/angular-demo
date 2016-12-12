@@ -33,6 +33,11 @@
   },
   "dependencies": {
     "browser-sync": "^2.18.5",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-jasmine": "^2.4.2",
+    "gulp-karma": "0.0.5",
+    "karma": "^0.13.22",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-spec-reporter": "0.0.26"
   }
 }
