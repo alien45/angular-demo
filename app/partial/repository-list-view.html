@@ -1,5 +1,6 @@
-<!-- list user repos -->
-<ul class="list-group" ng-if="userRepos">
+<!-- list user repositories requires userRepos to be an array of objects with Github repo details -->
+<ul class="list-group"
+    ng-if="userRepos">
     <li class="list-group-item"
         ng-repeat="repo in userRepos">
         <div class="row">

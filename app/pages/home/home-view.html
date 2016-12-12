@@ -1,6 +1,8 @@
 <div class="panel panel-success">
     <div class="panel-heading">
-        <h3 class="panel-title">Search Github User Repositories</h3>
+        <h3 class="panel-title">
+            Search Github User Repositories
+        </h3>
     </div>
     <div class="panel-body">
         <div class="form-group">
@@ -37,6 +39,7 @@
             </div>
         </div>
 
+        <!-- user search related errors -->
         <div ng-if="userError || (noUserFound && !userSelected.login)"
           class="col-xs-12 text-danger">
             {{ userError ? userError : 'No matching user found.'}}
@@ -61,6 +64,7 @@
                 </div>
             </h3>
 
+            <!-- repo error -->
             <span ng-if="repoError "
                   class="col-xs-12 text-center text-danger">
                 {{ repoError}}

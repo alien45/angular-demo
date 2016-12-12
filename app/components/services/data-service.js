@@ -5,7 +5,7 @@
 angular.module('components.services.data', []);
 
 /*
- * Data services
+ * Data service contains any data/api related functions
  */
 angular.module('components.services.data').factory('dataService', function(githubDataService) {
     'use strict';
@@ -23,35 +23,60 @@ angular.module('components.services.data').factory('githubDataService', function
     var apiUrl = 'http://api.github.com';
     var service = {};
 
+    /*
+     * Retrieves list of Github user details by partial or complete username.
+     *
+     * Params:
+     * @username string : Github login/username.
+     *
+     * Returns
+     * Angular $http Promise
+     */
     service.searchUsers = function(username) {
         return $http.get(apiUrl + '/search/users?q=' + username)
     };
 
     /*
-     * id
-     * avatar_url
-     * name
-     * type
-     * location
-     * html_url //github user page
-     * public_repos // total number of repos
-     * repos_url // url to api
+     * Retrieve Github user details by username.
+     * If successful, should return an array of objects with the following attributes:
+     * @id
+     * @avatar_url
+     * @name
+     * @type
+     * @location
+     * @html_url //github user page
+     * @public_repos // total number of repos
+     * @repos_url // url to api
+     *
+     * Params:
+     * @username string : Github login/username
+     *
+     * Returns
+     * Angular $http Promise
      */
     service.getUser = function(username) {
         return $http.get(apiUrl + '/users/' + username)
     };
 
     /*
-     * id
-     * name
-     * description
-     * private bool // indicates whether repo is private
-     * url // github api url
-     * html_url // github repo page
-     * language //programming language
-     * clone_url
-     * created_at
-     * updated_at
+     * Retrieve repositories by Github username.
+     * If successful, should return an array of objects with the following attributes:
+     * @id
+     * @name
+     * @description
+     * @private bool // indicates whether repo is private
+     * @url // github api url
+     * @html_url // github repo page
+     * @language //programming language
+     * @clone_url
+     * @created_at
+     * @updated_at
+     *
+     * Params:
+     * @username string : Github login/username
+     *
+     * Returns
+     * Angular $http Promise
      */
     service.getUserRepositories = function(username) {
         return $http.get(apiUrl + '/users/' + username + '/repos')

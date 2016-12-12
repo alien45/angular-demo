@@ -6,10 +6,13 @@
     'ngRoute',
     'ui.bootstrap',
     'pages.home',
-  ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+  ]);
+  angular.module('demoApp').config(function ($locationProvider, $routeProvider) {
     'use strict';
+    // user '!' after '#' on each pages
     $locationProvider.hashPrefix('!');
+    // if page route is not defined redirect to default page
     $routeProvider.otherwise({redirectTo: '/home'});
-  }]);
+  });
 })(angular);
 

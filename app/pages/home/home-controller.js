@@ -23,6 +23,9 @@ angular.module('pages.home').controller('homeController', function ($scope, data
     $scope.repoError = null;
     $scope.noUserFound = false;
 
+    /*
+     * Search for Github users by partial or complete username
+     */
     $scope.searchUsers = function (username) {
         $scope.userError = null;
         return dataService.github.searchUsers(username)
@@ -36,6 +39,14 @@ angular.module('pages.home').controller('homeController', function ($scope, data
             });
     };
 
+    /*
+     * Retrieves repositories by username
+     *
+     * Params:
+     * @userSelected string/object: if string will attempt to get user details and then repos
+     *
+     * Returns void
+     */
     $scope.getUserRepositories = function(userSelected) {
         $scope.userRepos = null;
         $scope.repoError = null;
