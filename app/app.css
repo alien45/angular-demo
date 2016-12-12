@@ -1,0 +1,10 @@
+/* app css stylesheet */
+body {
+  max-width: 1024px;
+  margin: auto;
+  padding: 15px;
+}
+
+* + .empty-message {
+  display: none;
+}

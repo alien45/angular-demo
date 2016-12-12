@@ -1,0 +1,74 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">Search Github User Repositories</h3>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label for="user"
+                   class="col-sm-2 col-xs-12 row">
+                Select user:
+            </label>
+
+            <div class="input-group col-sm-4 col-xs-12">
+                <input class="form-control"
+                       type="text"
+                       name="user"
+                       id="user"
+                       placeholder="Enter a username..."
+                       ng-model="userSelected"
+                       ng-change="userRepos = null;"
+                       uib-typeahead="user as user.login for user in searchUsers($viewValue)"
+                       typeahead-focus-first="true"
+                       typeahead-loading="loadingUsers"
+                       typeahead-no-results="noUserFound"
+                       typeahead-wait-ms="250"
+                       typeahead-on-select="getUserRepositories(userSelected)"
+                       required>
+
+                <span class="input-group-btn">
+                        <button class="btn btn-primary"
+                                ng-disabled="loadingUsers"
+                                ng-click="getUserRepositories(userSelected)">
+                            <i ng-if="loadingUsers"
+                               class="fa fa-spinner fa-spin"></i>
+                            <span ng-if="!loadingUsers"> GO </span>
+                        </button>
+                    </span>
+            </div>
+        </div>
+
+        <div ng-if="userError || (noUserFound && !userSelected.login)"
+          class="col-xs-12 text-danger">
+            {{ userError ? userError : 'No matching user found.'}}
+        </div>
+
+        <div>
+            <!-- user details -->
+            <h3 ng-if="userSelected && userSelected.login">
+                Selected user:
+                <div>
+                    <img ng-if="userSelected.avatar_url != ''"
+                         ng-src="{{userSelected.avatar_url}}"
+                         width="30"
+                         height="30"/>
+                    <a href="{{userSelected.html_url}}">
+                        {{userSelected.login}}
+                    </a>
+                </div>
+                <div ng-if="userRepos && userRepos.length > 0"
+                     class="small">
+                    Total repos available : {{userRepos.length}}
+                </div>
+            </h3>
+
+            <span ng-if="repoError "
+                  class="col-xs-12 text-center text-danger">
+                {{ repoError}}
+            </span>
+
+            <!-- list user repos -->
+            <div ng-include="'partial/repository-list-view.html'"></div>
+        </div>
+
+    </div>
+</div>

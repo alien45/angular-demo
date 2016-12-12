@@ -1,0 +1,36 @@
+<!-- list user repos -->
+<ul class="list-group" ng-if="userRepos">
+    <li class="list-group-item"
+        ng-repeat="repo in userRepos">
+        <div class="row">
+            <div class="col-sm-5 col-xs-12">
+                <div>
+                    <strong>
+                        Name:
+                    </strong>
+                    {{repo.name}}
+                </div>
+                <div>
+                    <strong>
+                        Link:
+                    </strong>
+                    <a href="{{repo.html_url}}">
+                        <i class="fa fa-github"></i>
+                        Github
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-7 col-xs-12">
+                <strong>
+                    Description:
+                </strong>
+                <div>
+                    {{repo.description || 'No description available.'}}
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item empty-message">
+        No repositories available for this user!
+    </li>
+</ul>
